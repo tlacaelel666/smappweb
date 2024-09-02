@@ -1,0 +1,7 @@
+build:
+  docker:
+    web: Dockerfile
+
+run:
+  web: gunicorn app:app 
+  worker: celery -A oneloadpro worker --loglevel=info 
