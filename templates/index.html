@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width"
+          initial-scale="1.0">
+   <title><h1>Converter URL</h1></title>
+   <style>
+     body{
+        font-family: sans-serif monospace;
+        margin: 50px;
+        text-align: center;
+     }
+     input[type="text"] {
+        width:auto;
+        padding:10px;
+        font-size: 16px;
+     }
+     button {
+        padding: 10px 20px;
+        font-size:16px;
+        margin-top: 10px;
+        cursor: pointer;
+     }
+  </style>
+</head>
+<body>
+<h1>SmokAppStore</h1>
+<label for="urlInput"></label>paste url<input type="text" id="urlInput" placeholder="insert url">
+<br>
+<button onclick="convertToMp3()">mp3 convert</button>
+
+ <script>
+    function convertToMp3() {
+    const url = document.getElementById('urlInput').valuie;
+    fetch('/convert',{
+    method:'POST',
+    headers:{
+    'content-Type': 'aplication/json'
+    },
+    body: JSON.stringify({ url:url })
+    })
+    .then(response=>response.blob())
+    .then(blob=>{
+    const url = window.URL.vreateObjectURL(blob);
+    const a = document.createElement('a');
+    a.style.display='none'
+    a.href=url;
+    a.download = 'audio.mp3';
+    document.body.appendChild(a);
+        a.clik();
+        window.Url.revokeObjectURL(url);
+    })
+    .catch(error =>{
+    a;ert("Error"+error.message);
+    }) 
+ }
+  </script>
