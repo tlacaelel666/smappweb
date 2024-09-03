@@ -1,7 +1,13 @@
 build:
   docker:
-    web: Dockerfile
+    web:
+     Dockerfile
+      image: smappweb:latest
 
 run:
-  web: gunicorn app:app 
-  worker: celery -A oneloadpro worker --loglevel=info 
+  web:
+   gunicorn app:app 
+    worker:
+     celery -A oneloadpro worker --loglevel=info 
+      image:
+       python:3.9-slim
