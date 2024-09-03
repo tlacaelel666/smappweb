@@ -6,9 +6,7 @@ services:
  dockerfile: Dockerfile
  command: gunicorn smappweb:oneloadpro --log-file - --bind 0.0.0.0:$PORT
 ports: 
- -"$PORT:$PORT"
-enviroment: 
- -PORT=5000
+ -"$PORT:$PORT
 
 worker:
  build: .
