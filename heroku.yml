@@ -4,17 +4,3 @@ services:
  build: .
  context: .
  dockerfile: Dockerfile
- command: gunicorn smappweb:oneloadpro --log-file - --bind 0.0.0.0:$PORT
-ports: 
- -"$PORT:$PORT
-worker:
- build: .
-command: celery -A oneloadpro worker --loglevel=info 
-enviroment: 
- - BROKER_URL=amqp://rabbitmq
- - RESULT_BACKEND=amqp://rabbitmq
-rabbitmq:
-  image: rabbitmq:3-magnament
-  ports: 
-   -"5672:5672"
-    -"15672:15672"
