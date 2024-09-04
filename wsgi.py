@@ -1,6 +1,5 @@
-import os
-from app import app  # Importa tu aplicación Flask
+from static import app
 
-if __name__ == "__main__":
-    app.run()
-  PORT = int(os.environ.get('PORT'))
+if __name__=='__main__':
+    app(debug=True)
+    application = app
