@@ -1,6 +1,8 @@
-version: '3'
-services: 
- web:
- build: .
- context: .
- dockerfile: Dockerfile
+version:
+ '3'
+services:
+web: null
+build: .
+context: .
+dockerfile:
+ Dockerfile
