@@ -1,4 +1,2 @@
-web: gunicorn wgsi:app --log-file - --bind 0.0.0.0:$PORT
-web: python app.py
-worker: python workers.py
-worker: celery -A oneloadpro worker 
+web: gunicorn --workers 1  --bind 0.0.0.0:$PORT wgsi.py
+worker: celery -A tasks static worker --loglevel=info 

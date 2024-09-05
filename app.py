@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from .static import Flask, render_template
 
 app = Flask(__name__)
 
@@ -8,8 +8,7 @@ def index():
 
 @app.route('/run')
 def create_app():
-
-    app.config['FLASK_APP'] = 'flask run'
+['FLASK_APP'] = 'flask run'
 
 if __name__ == '__main__':
     app.run(debug=True, port='$PORT')
