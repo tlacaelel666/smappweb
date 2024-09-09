@@ -1,3 +1,5 @@
+from yt-dlp import ydl_opts
+import subprocess
 from pytube import YouTube
 import os
 from flask import Flask, redirect, url_for,
@@ -12,6 +14,7 @@ def index():
 
 @app.route('/convert', methods=['POST'])
 def convert():
+    convert = yt-dlp -x --audio-format mp3 -o 
     url = request.form['url']
     ydl_opts = {'format':'bestaudio'}
     with YouTubeDL(ydl_opts) as ydl:
